@@ -11,7 +11,7 @@ public class DemoService {
     }
 
     public String generateData(String name) {
-        int number = random.nextInt(10);
+        int number = random.nextInt(random.nextInt());
         if (number >= 5 && number <= 8){
             return name+number;
         }
