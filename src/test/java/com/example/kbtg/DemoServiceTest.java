@@ -18,11 +18,12 @@ public class DemoServiceTest {
     }
 
     @Test
+    @DisplayName("ในการทำงานต้อง Invalid number with 1")
     public void throw_exception_1() {
         DemoService demoService = new DemoService();
         demoService.setRandom(new MockRandom(1));
         try {
-            demoService.generateData("somkiat");
+            demoService.generateData("Eark");
             fail();
         }catch (RuntimeException e) {
             assertEquals("Invalid number with 1", e.getMessage());
@@ -30,14 +31,15 @@ public class DemoServiceTest {
     }
 
     @Test
+    @DisplayName("ในการทำงานต้อง Invalid number with 4")
     public void throw_exception_with_juit5() {
         DemoService demoService = new DemoService();
-        demoService.setRandom(new MockRandom(1));
+        demoService.setRandom(new MockRandom(4));
         // JUnit 5 style
         Exception exception = assertThrows(RuntimeException.class, () -> {
-            demoService.generateData("somkiat");
+            demoService.generateData("Eark");
         });
-        assertEquals("Invalid number with 1", exception.getMessage());
+        assertEquals("Invalid number with 4", exception.getMessage());
     }
 
 }
