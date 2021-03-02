@@ -13,8 +13,8 @@ public class DemoServiceTest {
     public void random_5() {
         DemoService demoService = new DemoService();
         demoService.setRandom(new MockRandom(5));
-        String actualResult =demoService.generateData(ConstantClass.User);
-        assertEquals(ConstantClass.User+5, actualResult);
+        String actualResult =demoService.generateData("tharawat");
+        assertEquals("tharawat"+5, actualResult);
     }
 
     @Test
@@ -23,7 +23,7 @@ public class DemoServiceTest {
         DemoService demoService = new DemoService();
         demoService.setRandom(new MockRandom(1));
         try {
-            demoService.generateData(ConstantClass.User);
+            demoService.generateData("tharawat");
             fail();
         }catch (RuntimeException e) {
             assertEquals("Invalid number with 1", e.getMessage());
@@ -37,7 +37,7 @@ public class DemoServiceTest {
         demoService.setRandom(new MockRandom(4));
         // JUnit 5 style
         Exception exception = assertThrows(RuntimeException.class, () -> {
-            demoService.generateData(ConstantClass.User);
+            demoService.generateData("tharawat");
         });
         assertEquals("Invalid number with 4", exception.getMessage());
     }
