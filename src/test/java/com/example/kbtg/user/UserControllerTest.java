@@ -35,10 +35,12 @@ public class UserControllerTest {
 
     @Test
     public void user_not_found_with_user_id_15() {
+        UserNotFoundException response
+                = restTemplate.getForObject("/user/15", UserNotFoundException.class);
         Exception exception = assertThrows(UserNotFoundException.class, () -> {
             userservice.getInfo(15);
         });
-        assertEquals(errNotFoundID+15, exception.getMessage());
+        assertEquals(response.getMessage(), exception.getMessage());
     }
 
 }
